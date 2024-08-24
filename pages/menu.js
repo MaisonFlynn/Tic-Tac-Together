@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Menu() {
+  const router = useRouter();
   const [username, usernamed] = useState('');
 
   useEffect(() => {
@@ -10,22 +12,26 @@ export default function Menu() {
     }
   }, []);
 
+  const roboto = () => {
+    router.push('/roboto');
+  };
+
   return (
     <>
     <div className='container'>
       <h1>TIC-TAC-TOGETHER</h1>
 
-      <button className="nes-btn is-primary">ROBOTO</button>
+      <button className="nes-btn is-primary" onClick={roboto}>ROBOTO</button>
       <button className="nes-btn is-error">ONLINE</button>
       <button className="nes-btn is-success">FRIEND</button>
     </div>
 
     <div className='message'>
-      <section class="message -right">
-        <div class="nes-balloon from-right">
+      <section className="message -right">
+        <div className="nes-balloon from-right">
           <p>HELLO, {username}!</p>
         </div>
-        <i class="nes-bcrikko"></i>
+        <i className="nes-bcrikko"></i>
       </section>
     </div>
     </>

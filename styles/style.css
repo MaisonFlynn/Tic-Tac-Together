@@ -10,6 +10,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #4a4a4a;
 }
 
 .container {
@@ -21,7 +22,7 @@ html, body {
     gap: 20px;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     color: #fff;
     text-shadow: 0 1px 0 #ccc,
                0 2px 0 #c9c9c9,
@@ -59,4 +60,35 @@ button, input {
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+.nes-input {
+    background-clip: border-box !important;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+  
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+  
+.result {
+    text-align: center;
+}
+
+.result .nes-btn {
+    margin: 20px;
 }
