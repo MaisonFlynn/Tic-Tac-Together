@@ -72,7 +72,7 @@ button, input {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 10px;
 }
   
@@ -80,7 +80,7 @@ button, input {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     height: 100px;
     width: 100px;
