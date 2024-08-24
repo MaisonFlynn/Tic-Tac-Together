@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -18,6 +19,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     flex-direction: column;
     gap: 20px;
 }
@@ -71,7 +73,7 @@ button, input {
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
   
 .cell {
@@ -83,6 +85,7 @@ button, input {
     height: 100px;
     width: 100px;
     cursor: pointer;
+    margin: 0;
 }
   
 .result {
@@ -91,4 +94,10 @@ button, input {
 
 .result .nes-btn {
     margin: 20px;
+}
+
+.size {
+    margin-bottom: 12px;
+    font-size: 64px;
+    margin-right: 0;
 }

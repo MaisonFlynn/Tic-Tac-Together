@@ -63,7 +63,7 @@ export default function Roboto() {
 
   // Check IF Win
   const peep = (crisp, active) => {
-    const combination = [
+    const combinations = [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -74,7 +74,7 @@ export default function Roboto() {
       [2, 4, 6],
     ];
 
-    for (let combination of combination) {
+    for (let combination of combinations) {
       const [a, b, c] = combination;
       if (crisp[a] === active && crisp[b] === active && crisp[c] === active) {
         if (active === symbol) {
@@ -111,7 +111,14 @@ export default function Roboto() {
       </div>
       {announcer && (
         <div className="result">
-          {announcer === 'DRAW!' ? <h2>DRAW!</h2> : <h2>{announcer}</h2>}
+          {announcer === 'DRAW!' ? (
+            <h2>DRAW!</h2>
+          ) : (
+            <h2>
+              {announcer}
+              {announcer === 'YOU WIN!' && <i className="nes-icon trophy size"></i>}
+            </h2>
+          )}
           <button className="nes-btn is-success" onClick={restart}>AGAIN</button>
           <button className="nes-btn is-error" onClick={() => router.push('/menu')}>LEAVE</button>
         </div>
