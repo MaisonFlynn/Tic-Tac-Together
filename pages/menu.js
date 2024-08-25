@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 
 export default function Menu() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
-  const [clickCount, setClickCount] = useState(0); // To track clicks on the icon
+  const [username, usernamed] = useState('');
+  const [click, clicked] = useState(0); // Track Icon Click(s)
 
   useEffect(() => {
     const saved = localStorage.getItem('username');
     if (saved) {
-      setUsername(saved);
+      usernamed(saved);
     }
   }, []);
 
@@ -17,20 +17,20 @@ export default function Menu() {
     router.push('/roboto');
   };
 
-  const handleIconClick = () => {
-    setClickCount(prevCount => prevCount + 1);
-    if (clickCount + 1 === 3) {
+  const clicker = () => {
+    clicked(count => count + 1);
+    if (click + 1 === 3) {
       document.getElementById('dialog-rounded').showModal();
     }
   };
 
-  const handleNize = () => {
-    setUsername('JABRONI');
+  const nize = () => {
+    usernamed('JABRONI');
     localStorage.setItem('username', 'JABRONI');
     document.getElementById('dialog-rounded').close();
   };
 
-  const handleCalm = () => {
+  const calm = () => {
     document.getElementById('dialog-rounded').close();
   };
 
@@ -49,7 +49,7 @@ export default function Menu() {
           <div className="nes-balloon from-right">
             <p>{username === 'JABRONI' ? 'TSK' : `OI, ${username}!`}</p>
           </div>
-          <i className="nes-bcrikko" onClick={handleIconClick}></i>
+          <i className="nes-bcrikko" onClick={clicker}></i>
         </section>
       </div>
 
@@ -57,8 +57,8 @@ export default function Menu() {
         <form method="dialog">
           <p className="title">BUN OFF!</p>
           <menu className="dialog-menu">
-            <button className="nes-btn is-success" onClick={handleCalm}>CALM</button>
-            <button className="nes-btn is-error" onClick={handleNize}>NIZE</button>
+            <button className="nes-btn is-success" onClick={calm}>CALM</button>
+            <button className="nes-btn is-error" onClick={nize}>NIZE</button>
           </menu>
         </form>
       </dialog>
