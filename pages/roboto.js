@@ -164,7 +164,6 @@ export default function Roboto() {
       {announcer && (
         <div className="result">
           <h2>{announcer}</h2>
-          {announcer === 'YOU WIN!' && <i className="nes-icon trophy size"></i>}
           <button className="nes-btn is-success" onClick={reboot}>AGAIN</button>
           <button className="nes-btn is-error" onClick={() => router.push('/menu')}>LEAVE</button>
         </div>

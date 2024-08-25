@@ -141,13 +141,6 @@ progress::-webkit-progress-value {
     margin-top: 20px;
 }
 
-.size {
-    margin: 0;
-    margin-bottom: 12px;
-    font-size: 64px;
-    margin-right: 7.5px;
-}
-
 .nes-dialog {
     position: fixed;
     top: 50%;
