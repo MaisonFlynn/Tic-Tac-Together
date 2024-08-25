@@ -17,6 +17,7 @@ export default function Menu() {
     router.push('/roboto');
   };
 
+  // Easter Egg
   const clicker = () => {
     clicked(count => count + 1);
     if (click + 1 === 3) {

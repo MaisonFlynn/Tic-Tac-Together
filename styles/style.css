@@ -150,10 +150,7 @@ progress::-webkit-progress-value {
     text-align: center;
 }
 
-.dialog-menu button {
-    margin-right: 16px;
-}
-  
-.dialog-menu button:last-child {
-    margin-right: 0;
+.dialog-menu {
+    display: flex;
+    gap: 16px;
 }
