@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 html, body {
@@ -99,5 +100,22 @@ button, input {
 .size {
     margin-bottom: 12px;
     font-size: 64px;
+    margin-right: 0;
+}
+
+.nes-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    text-align: center;
+}
+
+.dialog-menu button {
+    margin-right: 16px;
+}
+  
+.dialog-menu button:last-child {
     margin-right: 0;
 }
