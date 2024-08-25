@@ -96,8 +96,8 @@ export default function Roboto() {
   };
 
   const skipperoo = () => {
-    skipped((prevSkips) => {
-      const nifty = prevSkips + 1;
+    skipped((previously) => {
+      const nifty = previously + 1;
       if (nifty >= 2) {
         announced(turn ? 'YOU LOSE!' : 'YOU WIN!'); // Two Skips = Loss
       } else {
@@ -153,14 +153,16 @@ export default function Roboto() {
           </div>
         ))}
       </div>
-      <div className="informant">
-        <h3>{turn ? `${username}'S TURN: ${symbol}` : `ROBOTO'S TURN: ${compute}`}</h3>
-        <progress
-          className={`nes-progress ${turn ? 'is-success' : 'is-error'}`}
-          value={timer}
-          max="30"
-        ></progress>
-      </div>
+      {!announcer && ( // ONLY Show IF NO Bruce Buffer
+        <div className="informant">
+          <h3>{turn ? `${username}'S TURN: ${symbol}` : `ROBOTO'S TURN: ${compute}`}</h3>
+          <progress
+            className={`nes-progress ${turn ? 'is-success' : 'is-error'}`}
+            value={timer}
+            max="30"
+          ></progress>
+        </div>
+      )}
       {announcer && (
         <div className="result">
           <h2>{announcer}</h2>
@@ -170,4 +172,5 @@ export default function Roboto() {
       )}
     </div>
   );
+
 }
