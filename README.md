@@ -16,8 +16,6 @@ node server.js
 
 ## Description
 
-- ***Multiplayer*** Friend/Random
-- ***Single-Player*** 🤖
-- ***Responsive*** Desktop/Mobile
+- ***Multiplayer*** OR Solo Dolo 🤖
+- ***Responsive*** Desktop & Mobile
 - ***✨ Aesthetic ✨*** 8-Bit 
-- ***"IMPOSSIBLE"*** Easter Egg
