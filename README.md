@@ -20,4 +20,4 @@ node server.js
 - ***Single-Player*** 🤖
 - ***Responsive*** Desktop/Mobile
 - ***✨ Aesthetic ✨*** 8-Bit 
-- ***IMPOSSIBLE*** Easter Egg
+- ***"IMPOSSIBLE"*** Easter Egg
