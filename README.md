@@ -13,3 +13,9 @@ npm install
 ```bash
 node server.js
 ```
+
+## Description
+
+- **Multiplayer** OR Solo Dolo 🤖
+- **Responsive:** Desktop & Mobile
+- **✨ Aestetic ✨** 8-Bit 
