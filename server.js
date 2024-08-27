@@ -26,10 +26,12 @@ app.prepare().then(() => {
 
     io.on('connection', (socket) => {
         console.log('User Connected');
-
+        socket.skips = 0; 
+    
         // Random Matchmaking
         socket.on('boop', (username) => {
             socket.username = username;
+            socket.skips = 0; 
             if (jorkingIT) {
                 // Match & Start
                 socket.symbol = 'O';
@@ -38,28 +40,29 @@ app.prepare().then(() => {
                 socket.opponent = jorkingIT;
                 jorkingIT.turn = true;
                 socket.turn = false;
-
+    
                 socket.emit('green', { symbol: 'O', symbOl: 'X', turn: false, opponent: jorkingIT.username });
                 jorkingIT.emit('green', { symbol: 'X', symbOl: 'O', turn: true, opponent: socket.username });
-
+    
                 jorkingIT = null;
             } else {
                 jorkingIT = socket;
                 socket.emit('yellow', 'SEARCHING...');
             }
         });
-
+    
         // Move
         socket.on('juke', ({ index, symbol }) => {
             if (socket.turn) {
                 socket.turn = false;
+                socket.skips = 0; 
                 socket.opponent.turn = true;
                 socket.opponent.emit('mOve', { index, symbol });
             } else {
                 socket.emit('fluke', 'CHILLAX!');
             }
         });
-
+    
         // Result
         socket.on('red', ({ goated }) => {
             if (goated !== null) {
@@ -75,18 +78,27 @@ app.prepare().then(() => {
                 socket.opponent.emit('red', { result: 'draw' });
             }
         });
-
+    
         // Timer Refresh
         socket.on('refresh', ({ time, nunya }) => {
             socket.emit('refresh', { time, nunya });
             socket.opponent.emit('refresh', { time, nunya: !nunya });
+    
+            // Check IF Timer = 0
+            if (time <= 0 && socket.turn) {
+                socket.skips += 1;
+                if (socket.skips >= 2) {
+                    socket.emit('red', { result: 'lose' });
+                    socket.opponent.emit('red', { result: 'win' });
+                }
+            }
         });
-
+    
         // Forfeit
         socket.on('forfeit', () => {
             socket.opponent.emit('discOnnected');
         });
-
+    
         // Disconnect
         socket.on('disconnect', () => {
             if (jorkingIT === socket) {
@@ -95,34 +107,35 @@ app.prepare().then(() => {
                 socket.opponent.emit('discOnnected');
             }
         });
-
+    
         // Generate Code
         socket.on('generate', (username) => {
             socket.username = username;
+            socket.skips = 0;
             const code = Math.random().toString(36).substr(2, 6).toUpperCase();
             socket.code = code;
             socket.emit('generated', code);
         });
-
+    
         // Join
         socket.on('join', ({ code, username }) => {
             const game = Array.from(io.sockets.sockets.values()).find(s => s.code === code);
-            
-            // CAN'T Join Self
+    
             if (game && game.id === socket.id) {
                 socket.emit('fluke', 'INVALID!');
                 return;
             }
-
+    
             if (game) {
                 socket.username = username;
                 socket.symbol = 'O';
+                socket.skips = 0;
                 game.symbol = 'X';
                 game.opponent = socket;
                 socket.opponent = game;
                 game.turn = true;
                 socket.turn = false;
-
+    
                 socket.emit('blast', { symbol: 'O', symbOl: 'X', turn: false, opponent: game.username });
                 game.emit('blast', { symbol: 'X', symbOl: 'O', turn: true, opponent: socket.username });
             } else {
