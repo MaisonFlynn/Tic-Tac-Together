@@ -21,6 +21,10 @@ export default function Menu() {
     router.push('/online');
   };
 
+  const friend = () => {
+    router.push('/friend');
+  };
+  
   // Easter Egg
   const clicker = () => {
     clicked(count => count + 1);
@@ -46,7 +50,7 @@ export default function Menu() {
 
         <button className="nes-btn is-primary" onClick={roboto}>ROBOTO</button>
         <button className="nes-btn is-error" onClick={online}>ONLINE</button>
-        <button className="nes-btn is-success">FRIEND</button>
+        <button className="nes-btn is-success" onClick={friend}>FRIEND</button>
       </div>
 
       <div className='message'>

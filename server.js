@@ -22,11 +22,12 @@ app.prepare().then(() => {
     const server = http.createServer(expression);
     const io = new Server(server);
 
-    let jorkingIT = null; // Waitin' Player
+    let jorkingIT = null; // Player Waitin'
 
     io.on('connection', (socket) => {
         console.log('User Connected');
 
+        // Random Matchmaking
         socket.on('boop', (username) => {
             socket.username = username;
             if (jorkingIT) {
@@ -48,9 +49,9 @@ app.prepare().then(() => {
             }
         });
 
+        // Move
         socket.on('juke', ({ index, symbol }) => {
             if (socket.turn) {
-                // Ensure Valid Move 
                 socket.turn = false;
                 socket.opponent.turn = true;
                 socket.opponent.emit('mOve', { index, symbol });
@@ -59,39 +60,73 @@ app.prepare().then(() => {
             }
         });
 
-        socket.on('red', ({ winner }) => {
-            if (winner !== null) {
-                if (winner === socket.symbol) {
-                    // Current Player WIN
+        // Result
+        socket.on('red', ({ goated }) => {
+            if (goated !== null) {
+                if (goated === socket.symbol) {
                     socket.emit('red', { result: 'win' });
                     socket.opponent.emit('red', { result: 'lose' });
                 } else {
-                    // Opponent WIN
                     socket.emit('red', { result: 'lose' });
                     socket.opponent.emit('red', { result: 'win' });
                 }
             } else {
-                // DRAW
                 socket.emit('red', { result: 'draw' });
                 socket.opponent.emit('red', { result: 'draw' });
             }
         });
 
+        // Timer Refresh
         socket.on('refresh', ({ time, nunya }) => {
-            // Broadcast Timer Update TO BOTH Player(s)
             socket.emit('refresh', { time, nunya });
             socket.opponent.emit('refresh', { time, nunya: !nunya });
         });
 
+        // Forfeit
         socket.on('forfeit', () => {
             socket.opponent.emit('discOnnected');
         });
 
+        // Disconnect
         socket.on('disconnect', () => {
             if (jorkingIT === socket) {
                 jorkingIT = null;
             } else if (socket.opponent) {
                 socket.opponent.emit('discOnnected');
+            }
+        });
+
+        // Generate Code
+        socket.on('generate', (username) => {
+            socket.username = username;
+            const code = Math.random().toString(36).substr(2, 6).toUpperCase();
+            socket.code = code;
+            socket.emit('generated', code);
+        });
+
+        // Join
+        socket.on('join', ({ code, username }) => {
+            const game = Array.from(io.sockets.sockets.values()).find(s => s.code === code);
+            
+            // CAN'T Join Self
+            if (game && game.id === socket.id) {
+                socket.emit('fluke', 'INVALID!');
+                return;
+            }
+
+            if (game) {
+                socket.username = username;
+                socket.symbol = 'O';
+                game.symbol = 'X';
+                game.opponent = socket;
+                socket.opponent = game;
+                game.turn = true;
+                socket.turn = false;
+
+                socket.emit('blast', { symbol: 'O', symbOl: 'X', turn: false, opponent: game.username });
+                game.emit('blast', { symbol: 'X', symbOl: 'O', turn: true, opponent: socket.username });
+            } else {
+                socket.emit('fluke', 'INVALID CODE');
             }
         });
     });
