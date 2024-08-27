@@ -18,4 +18,5 @@ node server.js
 
 - ***Multiplayer*** OR Solo Dolo 🤖
 - ***Responsive*** Desktop & Mobile
-- ***✨ Aesthetic ✨*** 8-Bit 
+- ***✨ Aesthetic ✨*** 8-Bit
+- ***Easter Egg(s)***
