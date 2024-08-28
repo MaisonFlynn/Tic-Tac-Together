@@ -154,3 +154,11 @@ progress::-webkit-progress-value {
     display: flex;
     gap: 16px;
 }
+
+.knobhead {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-right: 2.5px;
+}
