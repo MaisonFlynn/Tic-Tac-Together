@@ -16,8 +16,10 @@ node server.js
 
 ## Description
 
-- ***Multiplayer*** Friend/Random
-- ***Single-Player*** 🤖
-- ***Responsive*** Desktop/Mobile
-- ***✨ Aesthetic ✨*** 8-Bit 
+- ***Multiplayer***: w/ Friends OR Randoms
+- ***Matchmaking***: Join VIA Code OR Paired Randomly
+- ***Real-Time***: Game State Synchronization
+- ***Single-Player***: Easy OR Hard AI Difficulty
+- ***Responsive***: Desktop & Mobile
 - ***"IMPOSSIBLE"*** Easter Egg
+- ***✨ Aesthetic ✨***
