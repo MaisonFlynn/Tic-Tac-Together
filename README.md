@@ -16,10 +16,9 @@ node server.js
 
 ## Description
 
-- ***Multiplayer:*** w/ Friends OR Randoms
-- ***Matchmaking:*** Join VIA Code OR Randomize
-- ***Real-Time:*** Game State Synchronization
-- ***Single-Player:*** Easy OR Hard AI Difficulty
+- ***Multiplayer:*** Random Opponent / Friend Code
+- ***Real-Time*** Communication & Synchronization
+- ***Single-Player:*** Easy / Hard AI Difficulty
 - ***Responsive:*** Desktop & Mobile
 - ***"IMPOSSIBLE"*** Easter Egg
 - ***✨ Aesthetic ✨***
