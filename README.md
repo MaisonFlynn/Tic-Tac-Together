@@ -1,6 +1,6 @@
 ## Demonstration <small>[YouTube]</small>
 
-[![Application](https://img.youtube.com/vi/2nHHa06_ngk/maxresdefault.jpg)](https://www.youtube.com/watch?v=2nHHa06_ngk)
+[![Tic-Tac-Together](https://img.youtube.com/vi/2nHHa06_ngk/maxresdefault.jpg)](https://www.youtube.com/watch?v=2nHHa06_ngk)
 
 ## Installation
 
