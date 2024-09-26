@@ -13,12 +13,3 @@ npm install
 ```bash
 node server.js
 ```
-
-## Description
-
-- ***Multiplayer:*** Random Opponent / Friend Code
-- ***Real-Time*** Communication & Synchronization
-- ***Single-Player:*** Easy / Hard AI Difficulty
-- ***Responsive:*** Desktop & Mobile
-- ***"IMPOSSIBLE"*** Easter Egg
-- ***✨ Aesthetic ✨***
